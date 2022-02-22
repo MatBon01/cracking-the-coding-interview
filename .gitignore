@@ -1,0 +1,4 @@
+﻿# All files that are not c++
+**/*
+!**/*.cpp
+!**/
