@@ -14,20 +14,13 @@ characters, and that you are given the "true" length of the string.
 using namespace std;
 
 string URLify(string url, long length) {
-  char new_url[url.length() + 1];
-  url.copy(new_url, url.length(), 0);
-  int offset = 0;
-  for (int i = 1; i <= length; ++i) {
-    if (url[length - i] == ' ') {
-      /* Find nicer way of doing this */
-      new_url[url.length() - i - offset] = '0';
-      offset++;
-      new_url[url.length() - i - offset] = '2';
-      offset++;
-      new_url[url.length() - i - offset] = '%';
-      offset++;
-    } else {
-      new_url[url.length() - i - offset] = url[length - i];
+  string new_url = "";
+  for (auto c : url) {
+    if (c == ' ') {
+      new_url += "%20";
+    }
+    else {
+      new_url += c;
     }
   }
   return new_url;
